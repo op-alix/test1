@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Gaming Shop</title>
+
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Segoe UI',Arial,sans-serif;
+      background:linear-gradient(135deg,#020617,#0f172a);
+      color:#e5e7eb
+    }
+
+    header{
+      text-align:center;
+      padding:40px 20px
+    }
+    header h1{
+      color:#38bdf8;
+      font-size:2.4rem
+    }
+    header p{color:#94a3b8}
+
+    section{
+      max-width:1200px;
+      margin:auto;
+      padding:40px 20px
+    }
+    h2{color:#22d3ee;margin-bottom:20px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:25px
+    }
+
+    .card{
+      background:#020617;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 15px 40px rgba(0,0,0,.45);
+      transition:.3s
+    }
+    .card:hover{transform:translateY(-6px)}
+
+    .card img{
+      width:100%;
+      height:160px;
+      object-fit:cover
+    }
+
+    .content{padding:20px}
+    .card h3{margin:0;color:#38bdf8}
+    .price{color:#22c55e;font-weight:700;margin:10px 0}
+
+    .btn{
+      display:inline-block;
+      margin-top:10px;
+      padding:12px 18px;
+      background:linear-gradient(135deg,#38bdf8,#22d3ee);
+      color:#020617;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      cursor:pointer
+    }
+
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.7);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:100
+    }
+    .modal.active{display:flex}
+
+    .modal-box{
+      background:#020617;
+      padding:25px;
+      border-radius:20px;
+      max-width:420px;
+      width:90%
+    }
+    .modal-box h3{margin-top:0;color:#38bdf8}
+
+    .options a{
+      display:block;
+      margin:10px 0;
+      padding:12px;
+      border-radius:10px;
+      text-decoration:none;
+      color:#020617;
+      font-weight:700;
+      text-align:center
+    }
+    .wa{background:#25D366}
+    .ig{background:#f472b6}
+
+    /* PAYMENT */
+    .pay input,.pay select{
+      width:100%;
+      padding:12px;
+      margin:8px 0;
+      border-radius:10px;
+      border:none
+    }
+    .pay button{width:100%;margin-top:10px}
+
+    /* HELP */
+    .help{
+      background:#020617;
+      border-radius:18px;
+      padding:30px;
+      text-align:center
+    }
+    .help a{
+      color:#38bdf8;
+      font-weight:700;
+      text-decoration:none
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      color:#94a3b8
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎮 My Gaming Shop</h1>
+  <p>Recharge • Games • Support 24/7</p>
+</header>
+
+<section>
+  <h2>🔥 Free Fire</h2>
+  <div class="grid">
+
+    <div class="card">
+      <img src="ff.jpg" alt="Free Fire">
+      <div class="content">
+        <h3>100 Diamonds</h3>
+        <p class="price">10$</p>
+        <div class="btn" onclick="openModal('Free Fire – 100 Diamonds')">Acheter</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="ff.jpg" alt="Free Fire">
+      <div class="content">
+        <h3>500 Diamonds</h3>
+        <p class="price">45$</p>
+        <div class="btn" onclick="openModal('Free Fire – 500 Diamonds')">Acheter</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="ff.jpg" alt="Free Fire">
+      <div class="content">
+        <h3>1000 Diamonds</h3>
+        <p class="price">80$</p>
+        <div class="btn" onclick="openModal('Free Fire – 1000 Diamonds')">Acheter</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="ff.jpg" alt="Free Fire">
+      <div class="content">
+        <h3>Elite Pass</h3>
+        <p class="price">12$</p>
+        <div class="btn" onclick="openModal('Free Fire – Elite Pass')">Acheter</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>💳 Paiement</h2>
+  <div class="pay">
+    <input type="text" placeholder="Votre nom">
+    <input type="text" placeholder="ID du jeu">
+    <select>
+      <option>Méthode de paiement</option>
+      <option>Recharge</option>
+      <option>Carte cadeau</option>
+    </select>
+    <button class="btn">Valider paiement</button>
+  </div>
+</section>
+
+<section>
+  <div class="help">
+    <h2>❓ Need Help ?</h2>
+    <p>Support 24/7 – Réponse rapide</p>
+    <a href="https://wa.me/212600000000">💬 Contacter sur WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 My Gaming Shop
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="product"></h3>
+    <p>Choisissez comment nous contacter :</p>
+    <div class="options">
+      <a class="wa" href="https://wa.me/212600000000" target="_blank">WhatsApp</a>
+      <a class="ig" href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
+    <div class="btn" onclick="closeModal()">Fermer</div>
+  </div>
+</div>
+
+<script>
+  function openModal(name){
+    document.getElementById('product').innerText=name;
+    document.getElementById('modal').classList.add('active');
+  }
+  function closeModal(){
+    document.getElementById('modal').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>
